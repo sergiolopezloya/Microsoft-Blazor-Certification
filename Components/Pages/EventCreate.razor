@@ -1,0 +1,50 @@
+@page "/events/create"
+@using EventEase.Models
+@inject NavigationManager NavigationManager
+
+<PageTitle>Event Registration</PageTitle>
+
+<div class="registration-form">
+  <h2>Register for Event</h2>
+
+  <form @onsubmit="HandleRegistration">
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input type="text" class="form-control" id="name" @bind="registrationData.Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" @bind="registrationData.Email" required />
+    </div>
+
+    <div class="action-buttons">
+      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="button" class="btn btn-secondary" @onclick="NavigateBack">Cancel</button>
+    </div>
+  </form>
+</div>
+
+@code {
+  [Parameter]
+  public string? Id { get; set; }
+
+  private RegistrationData registrationData = new();
+
+  private async Task HandleRegistration()
+  {
+    // TODO: Implement registration logic
+    NavigationManager.NavigateTo($"/events/{Id}/confirmation");
+  }
+
+  private void NavigateBack()
+  {
+    NavigationManager.NavigateTo($"/events/{Id}");
+  }
+
+  private class RegistrationData
+  {
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+  }
+}

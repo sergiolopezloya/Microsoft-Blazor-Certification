@@ -1,0 +1,71 @@
+@page "/events/{Id}"
+@using EventEase.Models
+@inject NavigationManager NavigationManager
+
+<PageTitle>Event Details</PageTitle>
+
+<div class="event-details">
+  @if (currentEvent != null)
+  {
+    <h2>@currentEvent.Name</h2>
+    <div class="event-info">
+      <p><i class="bi bi-calendar"></i> @currentEvent.Date.ToString("MMMM dd, yyyy")</p>
+      <p><i class="bi bi-geo-alt"></i> @currentEvent.Location</p>
+      <p class="description">@currentEvent.Description</p>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-primary" @onclick="NavigateToRegistration">
+        Register Now
+      </button>
+      <button class="btn btn-secondary" @onclick="NavigateBack">
+        Back to Events
+      </button>
+    </div>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public string? Id { get; set; }
+
+  private Event? currentEvent;
+
+  protected override void OnInitialized()
+  {
+    currentEvent = events.FirstOrDefault(e => e.Id == Id);
+    if (currentEvent == null)
+    {
+      NavigationManager.NavigateTo("/events");
+    }
+  }
+
+  private void NavigateToRegistration()
+  {
+    NavigationManager.NavigateTo($"/events/{Id}/register");
+  }
+
+  private void NavigateBack()
+  {
+    NavigationManager.NavigateTo("/events");
+  }
+
+  // Temporary events list until we implement proper data storage
+  private static List<Event> events = new()
+{
+new Event
+{
+Name = "Tech Conference 2025",
+Date = new DateTime(2025, 4, 15),
+Location = "Seattle Convention Center",
+Description = "Annual technology conference featuring the latest innovations."
+},
+new Event
+{
+Name = "Workshop: Blazor in Action",
+Date = new DateTime(2025, 5, 1),
+Location = "Virtual Event",
+Description = "Hands-on workshop about building modern web apps with Blazor."
+}
+};
+}

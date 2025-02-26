@@ -1,0 +1,15 @@
+.events-container[b-861ihtslq0] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.action-buttons[b-861ihtslq0] {
+  padding: 1rem;
+  text-align: right;
+}
+
+.btn i[b-861ihtslq0] {
+  margin-right: 0.5rem;
+}

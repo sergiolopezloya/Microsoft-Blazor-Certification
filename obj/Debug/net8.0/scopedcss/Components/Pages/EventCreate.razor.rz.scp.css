@@ -1,0 +1,29 @@
+.registration-form[b-icdsm6myib] {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.form-group[b-icdsm6myib] {
+  margin-bottom: 1rem;
+}
+
+.form-group label[b-icdsm6myib] {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-control[b-icdsm6myib] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.action-buttons[b-icdsm6myib] {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}

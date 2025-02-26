@@ -1,0 +1,56 @@
+@page "/events"
+@using EventEase.Models
+@using EventEase.Components.Cards
+@inject NavigationManager NavigationManager
+
+<PageTitle>Events</PageTitle>
+
+<div class="events-container">
+  @foreach (var evt in events)
+  {
+    <EventCard Event="@evt" OnEventSelected="NavigateToDetails" />
+  }
+</div>
+
+<div class="action-buttons">
+  <button class="btn btn-primary" @onclick="NavigateToCreate">
+    <i class="bi bi-plus-circle"></i> Create New Event
+  </button>
+</div>
+
+@code {
+  private List<Event> events = new()
+{
+new Event
+{
+Id = "1",
+Name = "Tech Conference 2025",
+Date = new DateTime(2025, 4, 15),
+Location = "Seattle Convention Center",
+Description = "Annual technology conference featuring the latest innovations."
+},
+new Event
+{
+Id = "2",
+Name = "Workshop: Blazor in Action",
+Date = new DateTime(2025, 5, 1),
+Location = "Virtual Event",
+Description = "Hands-on workshop about building modern web apps with Blazor."
+}
+};
+
+  private void HandleEventSelected(Event selectedEvent)
+  {
+    Console.WriteLine($"Selected event: {selectedEvent.Name}");
+  }
+
+  private void NavigateToDetails(Event selectedEvent)
+  {
+    NavigationManager.NavigateTo($"/events/{selectedEvent.Id}");
+  }
+
+  private void NavigateToCreate()
+  {
+    NavigationManager.NavigateTo("/events/create", false);
+  }
+}

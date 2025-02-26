@@ -1,0 +1,32 @@
+.event-details[b-hbbd6l4v5m] {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.event-info[b-hbbd6l4v5m] {
+  margin: 1rem 0;
+}
+
+.event-info p[b-hbbd6l4v5m] {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.description[b-hbbd6l4v5m] {
+  margin-top: 1rem;
+  white-space: pre-line;
+  color: #666;
+}
+
+.action-buttons[b-hbbd6l4v5m] {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn i[b-hbbd6l4v5m] {
+  margin-right: 0.5rem;
+}

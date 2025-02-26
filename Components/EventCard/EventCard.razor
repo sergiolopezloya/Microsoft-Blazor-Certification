@@ -1,0 +1,25 @@
+@namespace EventEase.Components.Cards
+@using EventEase.Models
+@using System
+
+<div class="event-card" @onclick="OnEventClick">
+  <div class="event-header">
+    <h3>@Event.Name</h3>
+  </div>
+  <div class="event-content">
+    <div class="event-detail">
+      <i class="fas fa-calendar"></i>
+      <span>@Event.Date.ToString("MMM dd, yyyy")</span>
+    </div>
+    <div class="event-detail">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>@Event.Location</span>
+    </div>
+    @if (ShowDescription)
+    {
+      <div class="event-description">
+        <p>@Event.Description</p>
+      </div>
+    }
+  </div>
+</div>

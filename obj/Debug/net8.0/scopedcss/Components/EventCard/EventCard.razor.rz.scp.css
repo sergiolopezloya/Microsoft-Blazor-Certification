@@ -1,0 +1,47 @@
+.event-card[b-csszkbglax] {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover[b-csszkbglax] {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-header[b-csszkbglax] {
+  margin-bottom: 1rem;
+}
+
+.event-header h3[b-csszkbglax] {
+  margin: 0;
+  color: #333;
+}
+
+.event-content[b-csszkbglax] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-detail[b-csszkbglax] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+}
+
+.event-detail i[b-csszkbglax] {
+  width: 16px;
+}
+
+.event-description[b-csszkbglax] {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
