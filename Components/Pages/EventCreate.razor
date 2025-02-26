@@ -1,11 +1,18 @@
 @page "/events/create"
 @using EventEase.Models
+@using EventEase.Services
 @inject NavigationManager NavigationManager
+@inject UserSessionService SessionService
 
 <PageTitle>Event Registration</PageTitle>
 
 <div class="registration-form">
   <h2>Register for Event</h2>
+
+  @if (SessionService.IsAuthenticated)
+  {
+    <p>Welcome back, @SessionService.UserName!</p>
+  }
 
   <form @onsubmit="HandleRegistration">
     <div class="form-group">
@@ -31,9 +38,20 @@
 
   private RegistrationData registrationData = new();
 
+  protected override void OnInitialized()
+  {
+    if (SessionService.IsAuthenticated)
+    {
+      registrationData.Name = SessionService.UserName;
+    }
+  }
+
   private async Task HandleRegistration()
   {
-    // TODO: Implement registration logic
+    // Store user session
+    await Task.Run(() => SessionService.SetUserSession(Guid.NewGuid().ToString(), registrationData.Name));
+
+    // Navigate to confirmation
     NavigationManager.NavigateTo($"/events/{Id}/confirmation");
   }
 
