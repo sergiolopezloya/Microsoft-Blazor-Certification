@@ -24,6 +24,19 @@ EventEase is designed to manage events with various functionalities including cr
 - C#
 - HTML/CSS
 
+## Copilot Assistance
+
+Throughout the development of EventEase, GitHub Copilot provided valuable assistance in the following areas:
+
+- **Code Generation**: Copilot helped generate boilerplate code for components, services, and models, speeding up the development process.
+- **State Management**: Copilot suggested efficient ways to implement state management for tracking user sessions and event participation.
+- **Attendance Tracking**: Copilot provided guidance on creating an attendance tracking system, including the necessary models and services.
+- **Documentation**: Copilot assisted in drafting the README.md file, ensuring clear and concise documentation of the project.
+
+## License
+
+This project is licensed under the MIT License.
+
 ## Getting Started
 
 To get started with EventEase, clone the repository and follow the setup instructions in the `README.md` file.
