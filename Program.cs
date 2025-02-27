@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<UserSessionService>();
+builder.Services.AddScoped<AttendanceService>();
+builder.Services.AddScoped<AttendanceService>();
 
 var app = builder.Build();
 

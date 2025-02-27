@@ -3,6 +3,7 @@
 @using EventEase.Services
 @inject NavigationManager NavigationManager
 @inject UserSessionService SessionService
+@inject AttendanceService AttendanceService
 
 <PageTitle>Event Registration</PageTitle>
 
@@ -49,7 +50,11 @@
   private async Task HandleRegistration()
   {
     // Store user session
-    await Task.Run(() => SessionService.SetUserSession(Guid.NewGuid().ToString(), registrationData.Name));
+    var userId = Guid.NewGuid().ToString();
+    await Task.Run(() => SessionService.SetUserSession(userId, registrationData.Name));
+
+    // Record attendance
+    AttendanceService.RecordAttendance(Id!, userId, registrationData.Name);
 
     // Navigate to confirmation
     NavigationManager.NavigateTo($"/events/{Id}/confirmation");

@@ -1,0 +1,51 @@
+@page "/events/{id}/attendance"
+@using EventEase.Models
+@using EventEase.Services
+@inject AttendanceService AttendanceService
+
+<PageTitle>Event Attendance</PageTitle>
+
+<div class="attendance-dashboard">
+  <h2>Event Attendance</h2>
+
+  <div class="attendance-stats">
+    <p>Total Attendees: @AttendanceService.GetAttendeeCount(Id)</p>
+  </div>
+
+  <div class="attendance-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Check-in Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var record in AttendanceService.GetEventAttendance(Id))
+        {
+          <tr>
+            <td>@record.UserName</td>
+            <td>@record.CheckInTime.ToString("g")</td>
+            <td>@(record.IsPresent ? "Present" : "Absent")</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Id { get; set; } = string.Empty;
+
+  protected override void OnInitialized()
+  {
+    AttendanceService.OnAttendanceChanged += StateHasChanged;
+  }
+
+  public void Dispose()
+  {
+    AttendanceService.OnAttendanceChanged -= StateHasChanged;
+  }
+}
